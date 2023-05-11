@@ -1,1 +1,1 @@
-export { getUserData } from './user-data-api';
+export { fetchUsersData } from './user-data-api';

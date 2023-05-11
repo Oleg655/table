@@ -1,14 +1,26 @@
-import { User } from 'interfaces';
+import { UserI } from 'interfaces';
 
-export const getUserData = async (): Promise<User[] | undefined> => {
-    const response = await fetch(
-        'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}',
-        {
+const baseUrl = process.env.REACT_APP_BASE_URL;
+const rows = '10';
+const idDigits = 'number|1000';
+const description = 'lorem|32';
+const firstName = 'firstName';
+const lastName = 'lastName';
+const email = 'email';
+const phone = 'phone|(xxx)xxx-xx-xx';
+const address = 'addressObject';
+
+const getUrl = (): string => {
+    return `${baseUrl}?rows=${rows}&id=${idDigits}&firstName=${firstName}&lastName=${lastName}&email=${email}&phone=${phone}&address=${address}&description=${description}`;
+};
+
+export const fetchUsersData = {
+    getUserData: async (): Promise<UserI[]> => {
+        const response = await fetch(getUrl(), {
             method: 'GET',
-            credentials: 'include',
-        },
-    );
+        });
 
-    const data = await response.json();
-    return data;
+        const data = await response.json();
+        return data;
+    },
 };

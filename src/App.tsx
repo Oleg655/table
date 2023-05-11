@@ -5,7 +5,7 @@ import Table from 'components/Table';
 
 const App = () => {
     return (
-        <div className="App">
+        <div className="app">
             <Table />
         </div>
     );
