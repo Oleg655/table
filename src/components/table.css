@@ -1,0 +1,44 @@
+table {
+    width: 70vw;
+    font-size: 1.8rem;
+    border-collapse: collapse;
+    box-shadow: 0.5rem 0.5rem 0.5rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+
+.thead {
+    cursor: pointer;
+}
+
+thead tr {
+    background-color: #666;
+    color: #fff;
+}
+
+thead th {
+    width: 20%;
+}
+
+tbody td:last-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+tbody td {
+    width: 20rem;
+    text-overflow: ellipsis;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: transparent;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+th,
+td {
+    padding: 1.6rem 1rem;
+    text-align: left;
+    font-size: 1.5rem;
+}
