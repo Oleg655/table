@@ -1,16 +1,25 @@
 import { useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from 'store/hooks';
 import './table.css';
+
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { getRequestUsersData } from 'thunks';
+
+import Loader from './Loader';
 
 const Table = () => {
     const { usersData } = useAppSelector(state => state.users);
+    const loading = useAppSelector(state => state.users.loading);
+
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(getRequestUsersData());
     }, []);
+
+    if (loading) {
+        return <Loader />;
+    }
 
     return (
         <table>

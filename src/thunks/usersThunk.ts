@@ -8,7 +8,6 @@ export const getRequestUsersData = (): AppThunk => async dispatch => {
         dispatch(setUsersIsLoading(true));
 
         const data = await fetchUsersData.getUserData();
-        console.log(data);
         if (data) {
             dispatch(setUsersData(data));
         }

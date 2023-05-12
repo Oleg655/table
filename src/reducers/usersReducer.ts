@@ -14,6 +14,11 @@ export const usersReducer = (state: UserDataI = initialState, action: UserAction
                 ...state,
                 usersData: [...action.data],
             };
+        case UsersActioinT.SET_LOADING:
+            return {
+                ...state,
+                loading: action.isLoading,
+            };
         default:
             return state;
     }
