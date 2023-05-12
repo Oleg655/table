@@ -1,0 +1,1 @@
+export { getRequestUsersData } from './usersThunk';

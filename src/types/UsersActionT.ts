@@ -1,5 +1,6 @@
-import { setUsersIsLoading, setDataSort } from 'actions';
+import { setUsersIsLoading, setSort, setUsersData } from 'actions';
 
 export type UserActionReturnT =
     | ReturnType<typeof setUsersIsLoading>
-    | ReturnType<typeof setDataSort>;
+    | ReturnType<typeof setSort>
+    | ReturnType<typeof setUsersData>;

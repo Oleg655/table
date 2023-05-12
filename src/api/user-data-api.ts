@@ -11,7 +11,7 @@ const phone = 'phone|(xxx)xxx-xx-xx';
 const address = 'addressObject';
 
 const getUrl = (): string => {
-    return `${baseUrl}?rows=${rows}&id=${idDigits}&firstName=${firstName}&lastName=${lastName}&email=${email}&phone=${phone}&address=${address}&description=${description}`;
+    return `${baseUrl}?rows=${rows}&id={${idDigits}}&firstName=${firstName}&lastName=${lastName}&email=${email}&phone={${phone}}&address=${address}&description=${description}`;
 };
 
 export const fetchUsersData = {

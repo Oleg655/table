@@ -1,1 +1,1 @@
-export { setUsersIsLoading, setDataSort } from './usersActions';
+export { setUsersIsLoading, setSort, setUsersData } from './usersActions';
