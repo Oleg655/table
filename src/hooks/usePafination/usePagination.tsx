@@ -6,13 +6,13 @@ import { ReactComponent as Right } from 'assets/right-indicator.svg';
 
 import './usePagination.css';
 
-type UsePaginationProps = {
+type UsePaginationPropsT = {
     contentPerPage: number;
     totalElements: number;
     pageNumberLimit: number;
 };
 
-interface UsePaginationReturn {
+interface UsePaginationReturnI {
     currentPage: number;
     totalPages: number;
     renderPageNumbers: (JSX.Element | null)[];
@@ -26,7 +26,7 @@ export const usePagination = ({
     contentPerPage,
     totalElements,
     pageNumberLimit,
-}: UsePaginationProps): UsePaginationReturn => {
+}: UsePaginationPropsT): UsePaginationReturnI => {
     const [currentPage, setCurrentPage] = useState(1);
     const pageCount = Math.ceil(totalElements / contentPerPage);
 

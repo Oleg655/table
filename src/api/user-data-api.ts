@@ -1,7 +1,7 @@
 import { UserI } from 'interfaces';
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-const rows = '10';
+const rows = '100';
 const idDigits = 'number|1000';
 const description = 'lorem|32';
 const firstName = 'firstName';

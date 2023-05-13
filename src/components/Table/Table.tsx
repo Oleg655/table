@@ -12,6 +12,8 @@ import Loader from '../Loader/Loader';
 const Table = () => {
     const { usersData } = useAppSelector(state => state.users);
     const loading = useAppSelector(state => state.users.loading);
+    const page = useAppSelector(state => state.pagination.page);
+    const contentPerPage = useAppSelector(state => state.pagination.contentPerPage);
 
     const dispatch = useAppDispatch();
 
@@ -22,6 +24,10 @@ const Table = () => {
     if (loading) {
         return <Loader />;
     }
+
+    const indexOfLastItem = page * contentPerPage;
+    const indexOfFirstItem = indexOfLastItem - contentPerPage;
+    const currentItems = usersData.slice(indexOfFirstItem, indexOfLastItem);
 
     return (
         <>
@@ -37,7 +43,7 @@ const Table = () => {
                 </thead>
 
                 <tbody>
-                    {usersData?.map(user => (
+                    {currentItems?.map(user => (
                         <tr key={user.id}>
                             <td>{user.id}</td>
                             <td>{user.firstName}</td>

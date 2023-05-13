@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
+
+import { setPage } from 'actions';
+import { useAppDispatch } from 'hooks/useAppDispatch';
+import { useAppSelector } from 'hooks/useAppSelector';
 import { usePagination } from 'hooks/usePafination';
 import './pagination.css';
 
 const Pagination = () => {
+    const contentPerPage = useAppSelector(state => state.pagination.contentPerPage);
+    const totalElements = useAppSelector(state => state.pagination.totalElements);
+    const pageNumberLimit = useAppSelector(state => state.pagination.pageNumberLimit);
+    // const page = useAppSelector(state => state.pagination.page);
+
+    const dispatch = useAppDispatch();
+
     const {
         currentPage,
         totalPages,
@@ -11,10 +23,14 @@ const Pagination = () => {
         leftIArrow,
         rightArrow,
     } = usePagination({
-        contentPerPage: 10,
-        totalElements: 100,
-        pageNumberLimit: 10,
+        contentPerPage,
+        totalElements,
+        pageNumberLimit,
     });
+
+    useEffect(() => {
+        dispatch(setPage(currentPage));
+    }, [currentPage]);
     return (
         <div className="pagination">
             <p>

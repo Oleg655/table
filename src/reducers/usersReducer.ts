@@ -1,20 +1,20 @@
-import { UsersActioinT } from 'enums';
+import { UsersActioinsT } from 'enums';
 import { UserDataI } from 'interfaces';
-import { UserActionReturnT } from 'types';
+import { UserActionsReturnT } from 'types';
 
 const initialState: UserDataI = {
     loading: false,
     usersData: [],
 };
 
-export const usersReducer = (state: UserDataI = initialState, action: UserActionReturnT) => {
+export const usersReducer = (state: UserDataI = initialState, action: UserActionsReturnT) => {
     switch (action.type) {
-        case UsersActioinT.SET_DATA:
+        case UsersActioinsT.SET_DATA:
             return {
                 ...state,
                 usersData: [...action.data],
             };
-        case UsersActioinT.SET_LOADING:
+        case UsersActioinsT.SET_LOADING:
             return {
                 ...state,
                 loading: action.isLoading,

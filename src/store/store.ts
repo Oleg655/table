@@ -1,11 +1,12 @@
-import { usersReducer } from 'reducers';
+import { usersReducer, paginationReeducer } from 'reducers';
 import { applyMiddleware, combineReducers, legacy_createStore } from 'redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk';
-import { UserActionReturnT } from 'types';
+import { PaginationActionsReturnT, UserActionsReturnT } from 'types';
 
 const reducers = combineReducers({
     users: usersReducer,
+    pagination: paginationReeducer,
 });
 
 export const store = legacy_createStore(reducers, applyMiddleware(thunk));
@@ -14,7 +15,7 @@ export type RootSate = ReturnType<typeof store.getState>;
 
 export type AppStoreType = ReturnType<typeof reducers>;
 
-type AppActionsType = UserActionReturnT;
+type AppActionsType = UserActionsReturnT | PaginationActionsReturnT;
 
 export type RootState = ReturnType<typeof store.getState>;
 

@@ -1,1 +1,2 @@
-export { UsersActioinT } from './usersActions';
+export { UsersActioinsT } from './usersActions';
+export { PaginationActionsT } from './paginationActions';
