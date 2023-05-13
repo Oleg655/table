@@ -10,7 +10,6 @@ const Pagination = () => {
     const contentPerPage = useAppSelector(state => state.pagination.contentPerPage);
     const totalElements = useAppSelector(state => state.pagination.totalElements);
     const pageNumberLimit = useAppSelector(state => state.pagination.pageNumberLimit);
-    // const page = useAppSelector(state => state.pagination.page);
 
     const dispatch = useAppDispatch();
 
@@ -31,6 +30,7 @@ const Pagination = () => {
     useEffect(() => {
         dispatch(setPage(currentPage));
     }, [currentPage]);
+
     return (
         <div className="pagination">
             <p>

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import './table.css';
 
+import { setNameSort } from 'actions';
 import Pagination from 'components/Pagination';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useAppSelector } from 'hooks/useAppSelector';
@@ -12,6 +13,8 @@ import Loader from '../Loader/Loader';
 const Table = () => {
     const { usersData } = useAppSelector(state => state.users);
     const loading = useAppSelector(state => state.users.loading);
+    const sortName = useAppSelector(state => state.users.sortName);
+
     const page = useAppSelector(state => state.pagination.page);
     const contentPerPage = useAppSelector(state => state.pagination.contentPerPage);
 
@@ -29,13 +32,17 @@ const Table = () => {
     const indexOfFirstItem = indexOfLastItem - contentPerPage;
     const currentItems = usersData.slice(indexOfFirstItem, indexOfLastItem);
 
+    const onToggleSortByName = () => {
+        dispatch(setNameSort(!sortName));
+    };
+
     return (
         <>
             <table>
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>firstName</th>
+                        <th onClick={onToggleSortByName}>firstName</th>
                         <th>lastName</th>
                         <th>email</th>
                         <th>phone</th>

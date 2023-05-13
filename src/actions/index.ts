@@ -1,2 +1,2 @@
-export { setUsersIsLoading, setSort, setUsersData } from './usersActions';
+export { setUsersIsLoading, setNameSort, setUsersData } from './usersActions';
 export { setPage } from './paginationActions';
