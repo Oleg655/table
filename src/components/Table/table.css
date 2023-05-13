@@ -1,6 +1,6 @@
 table {
     width: 70vw;
-		margin: 0 auto;
+    margin: 0 auto;
     font-size: 1.8rem;
     border-collapse: collapse;
     box-shadow: 0.5rem 0.5rem 0.5rem 0.3rem rgba(0, 0, 0, 0.2);
@@ -43,3 +43,5 @@ td {
     text-align: left;
     font-size: 1.5rem;
 }
+
+
