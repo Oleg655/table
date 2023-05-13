@@ -1,6 +1,5 @@
 import { usersReducer, paginationReeducer } from 'reducers';
 import { applyMiddleware, combineReducers, legacy_createStore } from 'redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { PaginationActionsReturnT, UserActionsReturnT } from 'types';
 

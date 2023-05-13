@@ -23,6 +23,10 @@
     },
     "plugins": ["react", "@typescript-eslint", "prettier"],
     "rules": {
+        "import/no-extraneous-dependencies": [
+            "off",
+            { "devDependencies": false, "optionalDependencies": false, "peerDependencies": false }
+        ],
         "prefer-template": "off",
         "import/prefer-default-export": ["off"],
         "no-underscore-dangle": ["off"],

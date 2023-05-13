@@ -6,6 +6,7 @@ const initialState: UserDataI = {
     loading: false,
     sortName: false,
     usersData: [],
+    currentUser: {} as UserI,
 };
 
 export const usersReducer = (state: UserDataI = initialState, action: UserActionsReturnT) => {
@@ -15,10 +16,16 @@ export const usersReducer = (state: UserDataI = initialState, action: UserAction
                 ...state,
                 usersData: [...action.data],
             };
+
         case UsersActioinsT.SET_LOADING:
             return {
                 ...state,
                 loading: action.isLoading,
+            };
+        case UsersActioinsT.SET_USER_ITEM:
+            return {
+                ...state,
+                currentUser: state.usersData.find((user: UserI) => user.id === action.userId),
             };
         case UsersActioinsT.SET_NAME_SORT:
             return {
@@ -27,16 +34,37 @@ export const usersReducer = (state: UserDataI = initialState, action: UserAction
                 usersData: [
                     ...state.usersData.sort((a: UserI, b: UserI) => {
                         if (a.firstName > b.firstName) {
-                            return state.sortName ? 1 : -1;
+                            return state.sortName ? -1 : 1;
                         }
                         if (a.firstName < b.firstName) {
-                            return state.sortName ? -1 : 1;
+                            return state.sortName ? 1 : -1;
                         }
 
                         return 0;
                     }),
                 ],
             };
+        case UsersActioinsT.SET_NEW_USER_DATA: {
+            const newUser = {
+                id: +action.data.id,
+                firstName: action.data.firstName,
+                lastName: action.data.lastName,
+                email: action.data.email,
+                phone: action.data.phone,
+                address: {
+                    streetAddress: '',
+                    city: '',
+                    state: '',
+                    zip: '',
+                },
+                description: '',
+            };
+
+            return {
+                ...state,
+                usersData: [newUser, ...state.usersData],
+            };
+        }
 
         default:
             return state;

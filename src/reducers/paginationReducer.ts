@@ -4,7 +4,7 @@ import { PaginationActionsReturnT } from 'types';
 
 const initialState: PaginationStateI = {
     page: 1,
-    contentPerPage: 10,
+    contentPerPage: 6,
     totalElements: 100,
     pageNumberLimit: 10,
 };
