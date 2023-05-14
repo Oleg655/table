@@ -1,11 +1,11 @@
 import { UserI } from 'interfaces';
-import { getDigit } from 'utils';
+import { digitIdCount } from 'utils';
 
 let startState: UserI;
 
 beforeEach(() => {
     startState = {
-        id: 78,
+        id: 999,
         firstName: 'Kerri',
         lastName: 'Guilfoyle',
         email: 'DShebish@massa.com',
@@ -19,16 +19,16 @@ beforeEach(() => {
         },
     };
 });
-test('function getDigit exists', () => {
-    expect(typeof getDigit).toEqual('function');
+test('function digitIdCount exists', () => {
+    expect(typeof digitIdCount).toEqual('function');
 });
 
-test('getDigit should return only id index', () => {
-    const endState = getDigit(startState, 0);
-    expect(endState).toEqual(8);
+test('digitIdCount should return only id`s digit count', () => {
+    const endState = digitIdCount(startState);
+    expect(endState).toEqual(3);
 });
 
-test('getDigit return type should be number', () => {
-    const endState = getDigit(startState, 0);
+test('digitIdCount return type should be number', () => {
+    const endState = digitIdCount(startState);
     expect(typeof endState).toEqual('number');
 });
