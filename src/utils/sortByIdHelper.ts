@@ -1,15 +1,15 @@
 import { UserI } from 'interfaces';
 
-function getDigit(user: UserI, index: number) {
+export function getDigit(user: UserI, index: number) {
     return Math.floor(Math.abs(user.id) / 10 ** index) % 10;
 }
 
-function digitIdCount(user: UserI) {
+export function digitIdCount(user: UserI) {
     if (user.id === 0) return 1;
     return Math.floor(Math.log10(Math.abs(user.id))) + 1;
 }
 
-function mostIdDigits(users: UserI[]) {
+export function mostIdDigits(users: UserI[]) {
     let maxDigits = 0;
     for (let index = 0; index < users.length; index += 1) {
         maxDigits = Math.max(maxDigits, digitIdCount(users[index]));

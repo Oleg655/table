@@ -8,7 +8,7 @@ export const setStringsSort = (sort: boolean, tableName: string) =>
     ({ type: UsersActioinsT.SET_STRING_SORT, sort, tableName } as const);
 
 export const setNumberSort = (sort: boolean, tableName: string) =>
-    ({ type: UsersActioinsT.SET_NUMBER_SORT, sort, tableName } as const);
+    ({ type: UsersActioinsT.SET_ID_SORT, sort, tableName } as const);
 
 export const setUsersData = (data: UserI[]) => ({ type: UsersActioinsT.SET_DATA, data } as const);
 

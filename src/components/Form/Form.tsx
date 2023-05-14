@@ -21,7 +21,6 @@ const Form = () => {
     });
 
     const onSubmit: SubmitHandler<FormI> = data => {
-        console.log(data);
         dispatch(setNewUserData(data));
         setShowModal(false);
         reset();
@@ -47,7 +46,7 @@ const Form = () => {
                                 required: 'id is required',
                                 pattern: {
                                     value: /^\d+$/,
-                                    message: 'id must be numbers',
+                                    message: 'id must be a digit',
                                 },
                             })}
                         />

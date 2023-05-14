@@ -48,7 +48,7 @@ export const usersReducer = (state: UserDataI = initialState, action: UserAction
                     }),
                 ],
             };
-        case UsersActioinsT.SET_NUMBER_SORT:
+        case UsersActioinsT.SET_ID_SORT:
             return {
                 ...state,
                 id: action.sort,
