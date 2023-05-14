@@ -100,8 +100,8 @@ const Table = () => {
                 </tbody>
             </table>
 
-            <Pagination />
             {showUserItem ? <UserItem /> : null}
+            <Pagination />
         </>
     );
 };
