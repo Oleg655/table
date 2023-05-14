@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import './table.css';
-import {
-    setEmailSort,
-    setIdSort,
-    setLastNameSort,
-    setNameSort,
-    setPhoneSort,
-    setUsersItem,
-} from 'actions';
+import { setStringsSort, setUsersItem } from 'actions';
 import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
 import SortIndicator from 'components/SortIndicator';
@@ -21,11 +14,11 @@ import { getRequestUsersData } from 'thunks';
 const Table = () => {
     const { loading } = useAppSelector(state => state.users);
     const { usersData } = useAppSelector(state => state.users);
-    const { sortName } = useAppSelector(state => state.users);
-    const { sortLastName } = useAppSelector(state => state.users);
-    const { sortEmail } = useAppSelector(state => state.users);
-    const { sortId } = useAppSelector(state => state.users);
-    const { sortPhone } = useAppSelector(state => state.users);
+    const { firstName } = useAppSelector(state => state.users);
+    const { lastName } = useAppSelector(state => state.users);
+    const { email } = useAppSelector(state => state.users);
+    const { id } = useAppSelector(state => state.users);
+    const { phone } = useAppSelector(state => state.users);
     const { page } = useAppSelector(state => state.pagination);
     const { contentPerPage } = useAppSelector(state => state.pagination);
     const dispatch = useAppDispatch();
@@ -41,20 +34,20 @@ const Table = () => {
     const currentItems = usersData.slice(indexOfFirstItem, indexOfLastItem);
 
     const onToggleSortById = () => {
-        dispatch(setIdSort(!sortId));
+        dispatch(setStringsSort(!id, 'id'));
     };
     const onToggleSortByName = () => {
-        dispatch(setNameSort(!sortName));
+        dispatch(setStringsSort(!firstName, 'firstName'));
     };
     const onToggleSortByLastName = () => {
-        dispatch(setLastNameSort(!sortLastName));
+        dispatch(setStringsSort(!lastName, 'lastName'));
     };
     const onToggleSortByEmail = () => {
-        dispatch(setEmailSort(!sortEmail));
+        dispatch(setStringsSort(!email, 'email'));
     };
 
     const onToggleSortByPhone = () => {
-        dispatch(setPhoneSort(!sortPhone));
+        dispatch(setStringsSort(!phone, 'phone'));
     };
 
     const onToggleShowUserItem = (userId: number) => {
@@ -73,22 +66,22 @@ const Table = () => {
                     <tr>
                         <th onClick={onToggleSortById}>
                             id
-                            <SortIndicator isSorted={sortId} />
+                            <SortIndicator isSorted={id} />
                         </th>
                         <th onClick={onToggleSortByName}>
                             firstName
-                            <SortIndicator isSorted={sortName} />
+                            <SortIndicator isSorted={firstName} />
                         </th>
                         <th onClick={onToggleSortByLastName}>
                             lastName
-                            <SortIndicator isSorted={sortLastName} />
+                            <SortIndicator isSorted={lastName} />
                         </th>
                         <th onClick={onToggleSortByEmail}>
                             email
-                            <SortIndicator isSorted={sortEmail} />
+                            <SortIndicator isSorted={email} />
                         </th>
                         <th onClick={onToggleSortByPhone}>
-                            phone <SortIndicator isSorted={sortPhone} />
+                            phone <SortIndicator isSorted={phone} />
                         </th>
                     </tr>
                 </thead>

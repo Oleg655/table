@@ -1,13 +1,10 @@
 export {
     setUsersIsLoading,
-    setNameSort,
     setUsersData,
     setNewUserData,
     setUsersItem,
-    setLastNameSort,
-    setEmailSort,
-    setIdSort,
-    setPhoneSort,
+    setStringsSort,
+    setNumberSort,
 } from './usersActions';
 export { setPage } from './paginationActions';
 export { setAppIsLoading } from './appActions';

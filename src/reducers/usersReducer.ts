@@ -1,14 +1,15 @@
 import { UsersActioinsT } from 'enums';
 import { UserDataI, UserI } from 'interfaces';
 import { UserActionsReturnT } from 'types';
+import { radixSort } from 'utils';
 
 const initialState: UserDataI = {
     loading: false,
-    sortName: false,
-    sortLastName: false,
-    sortEmail: false,
-    sortId: false,
-    sortPhone: false,
+    firstName: false,
+    lastName: false,
+    email: false,
+    id: false,
+    phone: false,
     usersData: [],
     currentUser: {} as UserI,
 };
@@ -30,63 +31,29 @@ export const usersReducer = (state: UserDataI = initialState, action: UserAction
                 ...state,
                 currentUser: state.usersData.find((user: UserI) => user.id === action.userId),
             };
-        case UsersActioinsT.SET_ID_SORT:
+        case UsersActioinsT.SET_STRING_SORT:
             return {
                 ...state,
-                usersData: [],
-            };
-        case UsersActioinsT.SET_NAME_SORT:
-            return {
-                ...state,
-                sortName: action.sort,
+                [action.tableName]: action.sort,
                 usersData: [
                     ...state.usersData.sort((a: UserI, b: UserI) => {
-                        if (a.firstName > b.firstName) {
-                            return state.sortName ? -1 : 1;
+                        if ((a as any)[action.tableName] > (b as any)[action.tableName]) {
+                            return (state as any)[action.tableName] ? -1 : 1;
                         }
-                        if (a.firstName < b.firstName) {
-                            return state.sortName ? 1 : -1;
+                        if ((a as any)[action.tableName] < (b as any)[action.tableName]) {
+                            return (state as any)[action.tableName] ? 1 : -1;
                         }
 
                         return 0;
                     }),
                 ],
             };
-        case UsersActioinsT.SET_LASTNAME_SORT:
+        case UsersActioinsT.SET_NUMBER_SORT:
             return {
                 ...state,
-                sortLastName: action.sort,
-                usersData: [
-                    ...state.usersData.sort((a: UserI, b: UserI) => {
-                        if (a.lastName > b.lastName) {
-                            return state.sortLastName ? -1 : 1;
-                        }
-                        if (a.lastName < b.lastName) {
-                            return state.sortLastName ? 1 : -1;
-                        }
-
-                        return 0;
-                    }),
-                ],
+                id: action.sort,
+                usersData: radixSort([...state.usersData]),
             };
-        case UsersActioinsT.SET_EMAIL_SORT:
-            return {
-                ...state,
-                sortEmail: action.sort,
-                usersData: [
-                    ...state.usersData.sort((a: UserI, b: UserI) => {
-                        if (a.email > b.email) {
-                            return state.sortEmail ? -1 : 1;
-                        }
-                        if (a.email < b.email) {
-                            return state.sortEmail ? 1 : -1;
-                        }
-
-                        return 0;
-                    }),
-                ],
-            };
-
         case UsersActioinsT.SET_NEW_USER_DATA: {
             const newUser = {
                 id: +action.data.id,

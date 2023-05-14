@@ -2,11 +2,11 @@ import { UserI } from './UserI';
 
 export interface UserDataI {
     loading: boolean;
-    sortName: boolean;
-    sortLastName: boolean;
-    sortEmail: boolean;
-    sortId: boolean;
-    sortPhone: boolean;
+    firstName: boolean;
+    lastName: boolean;
+    email: boolean;
+    id: boolean;
+    phone: boolean;
     usersData: UserI[];
     currentUser: UserI | undefined;
 }

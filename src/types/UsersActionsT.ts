@@ -1,22 +1,16 @@
 import {
-    setNameSort,
     setUsersData,
     setNewUserData,
     setUsersItem,
-    setLastNameSort,
-    setEmailSort,
-    setIdSort,
-    setPhoneSort,
     setUsersIsLoading,
+    setStringsSort,
+    setNumberSort,
 } from 'actions';
 
 export type UserActionsReturnT =
+    | ReturnType<typeof setStringsSort>
+    | ReturnType<typeof setNumberSort>
     | ReturnType<typeof setUsersIsLoading>
     | ReturnType<typeof setNewUserData>
-    | ReturnType<typeof setNameSort>
     | ReturnType<typeof setUsersData>
-    | ReturnType<typeof setUsersItem>
-    | ReturnType<typeof setLastNameSort>
-    | ReturnType<typeof setEmailSort>
-    | ReturnType<typeof setIdSort>
-    | ReturnType<typeof setPhoneSort>;
+    | ReturnType<typeof setUsersItem>;
