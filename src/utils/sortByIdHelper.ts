@@ -17,7 +17,7 @@ export function mostIdDigits(users: UserI[]) {
     return maxDigits;
 }
 
-export function radixSortById(users: UserI[]) {
+export function radixSortByUserId(users: UserI[]) {
     const maxIdDigitCount = mostIdDigits(users);
     const newUsers: UserI[] = [];
     for (let k = 0; k < maxIdDigitCount; k += 1) {

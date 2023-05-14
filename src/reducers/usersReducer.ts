@@ -1,7 +1,7 @@
 import { UsersActioinsT } from 'enums';
 import { UserDataI, UserI } from 'interfaces';
 import { UserActionsReturnT } from 'types';
-import { radixSortById } from 'utils';
+import { radixSortByUserId } from 'utils';
 
 const initialState: UserDataI = {
     loading: false,
@@ -52,7 +52,7 @@ export const usersReducer = (state: UserDataI = initialState, action: UserAction
             return {
                 ...state,
                 id: action.sort,
-                usersData: radixSortById([...state.usersData]),
+                usersData: radixSortByUserId([...state.usersData]),
             };
         case UsersActioinsT.SET_NEW_USER_DATA: {
             const newUser = {

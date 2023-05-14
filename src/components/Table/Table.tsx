@@ -23,8 +23,6 @@ const Table = () => {
     const { contentPerPage } = useAppSelector(state => state.pagination);
     const dispatch = useAppDispatch();
 
-    console.log(usersData);
-
     const [showUserItem, setShowUserItem] = useState(false);
 
     useEffect(() => {

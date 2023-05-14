@@ -1,1 +1,1 @@
-export { getDigit, digitIdCount, mostIdDigits, radixSortById } from './sortByIdHelper';
+export { getDigit, digitIdCount, mostIdDigits, radixSortByUserId } from './sortByIdHelper';

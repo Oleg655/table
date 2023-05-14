@@ -53,23 +53,23 @@ const Form = () => {
                         {errors.id && <div className="error">{errors.id.message}</div>}
                     </label>
 
-                    <div>
-                        <label htmlFor="firstName">
-                            Your Name
-                            <input
-                                {...register('firstName', {
-                                    required: 'name is required',
-                                    pattern: {
-                                        value: /^[A-Z]+$/i,
-                                        message: 'enter valid name',
-                                    },
-                                })}
-                            />
+                    <label htmlFor="firstName">
+                        Your Name
+                        <input
+                            {...register('firstName', {
+                                required: 'name is required',
+                                pattern: {
+                                    value: /^[A-Z]+$/i,
+                                    message: 'enter valid name',
+                                },
+                            })}
+                        />
+                        <div>
                             {errors.firstName && (
                                 <div className="error">{errors.firstName.message}</div>
                             )}
-                        </label>
-                    </div>
+                        </div>
+                    </label>
 
                     <label htmlFor="lastName">
                         Your LastName
@@ -113,7 +113,7 @@ const Form = () => {
                         />
                         {errors.phone && <div className="error">{errors.phone.message}</div>}
                     </label>
-                    <div>
+                    <div className="actions">
                         <button className="form-btn" type="submit">
                             Добавить в таблицу
                         </button>

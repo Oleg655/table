@@ -1,5 +1,5 @@
 import { UserI } from 'interfaces';
-import { radixSortById } from 'utils';
+import { radixSortByUserId } from 'utils';
 
 let startState: UserI[];
 
@@ -64,19 +64,19 @@ beforeEach(() => {
     ];
 });
 
-test('function radixSortById exists', () => {
-    expect(typeof radixSortById).toEqual('function');
+test('function radixSortByUserId exists', () => {
+    expect(typeof radixSortByUserId).toEqual('function');
 });
 
-test('radixSortById should sorted array of users by id', () => {
-    const endState = radixSortById(startState);
+test('radixSortByUserId should sorted array of users by id', () => {
+    const endState = radixSortByUserId(startState);
     expect(endState[0].id).toEqual(9);
     expect(endState[1].id).toEqual(23);
     expect(endState[2].id).toEqual(723);
     expect(endState[3].id).toEqual(1000);
 });
 
-test('radixSortById return type should be array', () => {
-    const endState = radixSortById(startState);
+test('radixSortByUserId return type should be array', () => {
+    const endState = radixSortByUserId(startState);
     expect(Array.isArray(endState)).toBe(true);
 });
