@@ -105,10 +105,10 @@ const Form = () => {
                         Your phone
                         <input
                             {...register('phone', {
-                                required: 'last name is required',
+                                required: 'phone is required',
                                 pattern: {
-                                    value: /^(\d{3})\d{3}\d{4}/g,
-                                    message: 'enter valid phone with 10 numbers',
+                                    value: /^\d{3}-\d{3}-\d{4}/g,
+                                    message: `enter valid phone with 10 numbers 'XXX-XXX-XXXX'`,
                                 },
                             })}
                         />

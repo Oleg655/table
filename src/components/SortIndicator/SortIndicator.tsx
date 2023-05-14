@@ -10,9 +10,9 @@ const SortIndicator = ({ isSorted }: SortIndicatorProsT) => {
     return (
         <div>
             {isSorted ? (
-                <ArrowUp className="sort-indicator" />
-            ) : (
                 <ArrowDown className="sort-indicator" />
+            ) : (
+                <ArrowUp className="sort-indicator" />
             )}
         </div>
     );
