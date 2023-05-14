@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import './table.css';
 import { setStringsSort, setUsersItem } from 'actions';
@@ -9,7 +9,6 @@ import UserItem from 'components/UserItem';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { UserI } from 'interfaces';
-import { getRequestUsersData } from 'thunks';
 
 const Table = () => {
     const { loading } = useAppSelector(state => state.users);
@@ -25,10 +24,6 @@ const Table = () => {
     const dispatch = useAppDispatch();
 
     const [showUserItem, setShowUserItem] = useState(false);
-
-    useEffect(() => {
-        dispatch(getRequestUsersData());
-    }, []);
 
     const indexOfLastItem = page * contentPerPage;
     const indexOfFirstItem = indexOfLastItem - contentPerPage;
@@ -93,7 +88,7 @@ const Table = () => {
                             onDoubleClick={() => {
                                 onToggleShowUserItem(user.id);
                             }}
-                            key={user.id}
+                            key={Math.random()}
                         >
                             <td>{user.id}</td>
                             <td>{user.firstName}</td>

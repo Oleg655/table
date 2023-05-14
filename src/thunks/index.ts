@@ -1,1 +1,1 @@
-export { getRequestUsersData } from './usersThunk';
+export { getRequestSmallUsersData, getRequestBigUsersData } from './usersThunk';

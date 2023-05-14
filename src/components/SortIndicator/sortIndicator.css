@@ -1,5 +1,4 @@
 .sort-indicator {
-	transform: translate(50%, 25%);
-	height: 2rem;
-	width: 2rem;
+    height: 2rem;
+    width: 2rem;
 }

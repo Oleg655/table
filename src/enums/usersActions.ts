@@ -1,4 +1,5 @@
 export enum UsersActioinsT {
+    SET_DATA_SIZE = '[UsersActioinsT] SET_DATA_SIZE',
     SET_DATA = '[UsersActioinsT] SET_DATA',
     SET_STRING_SORT = '[UsersActioinsT] SET_STRING_SORT',
     SET_ID_SORT = '[UsersActioinsT] SET_ID_SORT',

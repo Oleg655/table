@@ -4,6 +4,7 @@ import { UserActionsReturnT } from 'types';
 import { radixSortByUserId } from 'utils';
 
 const initialState: UserDataI = {
+    dataSize: '',
     loading: false,
     firstName: false,
     lastName: false,
@@ -20,6 +21,11 @@ export const usersReducer = (state: UserDataI = initialState, action: UserAction
             return {
                 ...state,
                 loading: action.isLoading,
+            };
+        case UsersActioinsT.SET_DATA_SIZE:
+            return {
+                ...state,
+                dataSize: action.size,
             };
         case UsersActioinsT.SET_DATA:
             return {

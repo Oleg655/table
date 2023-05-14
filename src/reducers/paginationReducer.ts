@@ -5,7 +5,7 @@ import { PaginationActionsReturnT } from 'types';
 const initialState: PaginationStateI = {
     page: 1,
     contentPerPage: 6,
-    totalElements: 100,
+    totalElements: 0,
     pageNumberLimit: 10,
 };
 
@@ -18,6 +18,11 @@ export const paginationReeducer = (
             return {
                 ...state,
                 page: action.page,
+            };
+        case PaginationActionsT.SET_TOTAL_ELEMENTS:
+            return {
+                ...state,
+                totalElements: action.number,
             };
 
         default:

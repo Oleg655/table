@@ -10,6 +10,9 @@ export const setStringsSort = (sort: boolean, tableName: string) =>
 export const setNumberSort = (sort: boolean, tableName: string) =>
     ({ type: UsersActioinsT.SET_ID_SORT, sort, tableName } as const);
 
+export const setDataSize = (size: string) =>
+    ({ type: UsersActioinsT.SET_DATA_SIZE, size } as const);
+
 export const setUsersData = (data: UserI[]) => ({ type: UsersActioinsT.SET_DATA, data } as const);
 
 export const setUsersItem = (userId: number) =>

@@ -1,3 +1,5 @@
-import { setPage } from 'actions';
+import { setPage, setTotalElements } from 'actions';
 
-export type PaginationActionsReturnT = ReturnType<typeof setPage>;
+export type PaginationActionsReturnT =
+    | ReturnType<typeof setPage>
+    | ReturnType<typeof setTotalElements>;

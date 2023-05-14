@@ -1,22 +1,17 @@
 import { UserI } from 'interfaces';
-
-const baseUrl = process.env.REACT_APP_BASE_URL;
-const rows = '100';
-const idDigits = 'number|1000';
-const description = 'lorem|32';
-const firstName = 'firstName';
-const lastName = 'lastName';
-const email = 'email';
-const phone = 'phone|(xxx)xxx-xx-xx';
-const address = 'addressObject';
-
-const getUrl = (): string => {
-    return `${baseUrl}?rows=${rows}&id={${idDigits}}&firstName={${firstName}}&lastName={${lastName}}&email={${email}}&phone={${phone}}&address={${address}}&description={${description}}`;
-};
+import { getUrlBigData, getUrlSmallData } from 'utils';
 
 export const fetchUsersData = {
-    getUserData: async (): Promise<UserI[]> => {
-        const response = await fetch(getUrl(), {
+    getUserSmallData: async (): Promise<UserI[]> => {
+        const response = await fetch(getUrlSmallData(), {
+            method: 'GET',
+        });
+
+        const data = await response.json();
+        return data;
+    },
+    getUserBigData: async (): Promise<UserI[]> => {
+        const response = await fetch(getUrlBigData(), {
             method: 'GET',
         });
 

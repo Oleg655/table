@@ -1,6 +1,7 @@
 import { UserI } from './UserI';
 
 export interface UserDataI {
+    dataSize: string;
     loading: boolean;
     firstName: boolean;
     lastName: boolean;
