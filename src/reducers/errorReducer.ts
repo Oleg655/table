@@ -2,7 +2,7 @@ import { ErrorMessageType } from 'enums';
 import { ErrorStateI } from 'interfaces';
 import { ErrorActionsReturnT } from 'types';
 
-const initState = {
+const initState: ErrorStateI = {
     error: null,
 };
 

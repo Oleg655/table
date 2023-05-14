@@ -1,7 +1,6 @@
 .form {
     width: 100%;
     height: 80%;
-
     font-size: 1.6rem;
 }
 
@@ -9,8 +8,8 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 80%;
-    height: 20%;
+    width: 40rem;
+    height: 6rem;
 }
 
 .form input {
@@ -48,15 +47,6 @@
 .form-actions {
     text-align: right;
 }
-.invalid input {
-    border: 1px solid #b40e0e;
-    background-color: #fddddd;
-}
-
-.invalid input:focus {
-    border-color: #ff8800;
-    background-color: #fbe8d2;
-}
 
 .error {
     font-size: 1.6rem;
@@ -65,5 +55,7 @@
 
 .actions {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 40rem;
+    margin: 0 auto;
 }

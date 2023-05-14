@@ -12,6 +12,7 @@ export const getRequestUsersData = (): AppThunk => async dispatch => {
             dispatch(setUsersData(data));
         }
     } catch (error: any) {
+        console.error(error);
         dispatch(setErrorMessage(error.message));
     } finally {
         dispatch(setUsersIsLoading(false));

@@ -21,6 +21,7 @@ const Table = () => {
     const { phone } = useAppSelector(state => state.users);
     const { page } = useAppSelector(state => state.pagination);
     const { contentPerPage } = useAppSelector(state => state.pagination);
+
     const dispatch = useAppDispatch();
 
     const [showUserItem, setShowUserItem] = useState(false);
