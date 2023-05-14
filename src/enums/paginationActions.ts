@@ -1,3 +1,3 @@
 export enum PaginationActionsT {
-    SET_PAGE = '[UsersActioin] SET_PAGE',
+    SET_PAGE = '[PaginationActionsT] SET_PAGE',
 }

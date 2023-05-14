@@ -1,14 +1,15 @@
 import { useState } from 'react';
 
-// import { setNewUserData } from 'actions';
+import { setNewUserData } from 'actions';
 import Modal from 'components/Modal';
+import { useAppDispatch } from 'hooks/useAppDispatch';
 import { FormI } from 'interfaces';
 import './form.css';
 import { SubmitHandler, useForm } from 'react-hook-form';
-// import { useAppDispatch } from 'hooks/useAppDispatch';
 
 const Form = () => {
     const [showModal, setShowModal] = useState(false);
+    const dispatch = useAppDispatch();
 
     const {
         register,
@@ -16,16 +17,15 @@ const Form = () => {
         formState: { errors },
         reset,
     } = useForm<FormI>({
-        mode: 'onBlur',
+        mode: 'onChange',
     });
 
     const onSubmit: SubmitHandler<FormI> = data => {
         console.log(data);
+        dispatch(setNewUserData(data));
         setShowModal(false);
         reset();
     };
-
-    // const dispatch = useAppDispatch();
 
     return (
         <>
@@ -36,20 +36,36 @@ const Form = () => {
                     setShowModal(true);
                 }}
             >
-                Add pack
+                Добавить
             </button>
             <Modal show={showModal} backgroundOnClick={() => setShowModal(false)}>
                 <form onSubmit={handleSubmit(onSubmit)} className="form">
                     <label htmlFor="id">
                         Your id
-                        <input {...register('id', { required: 'id is required' })} />
+                        <input
+                            {...register('id', {
+                                required: 'id is required',
+                                pattern: {
+                                    value: /^\d+$/,
+                                    message: 'id must be numbers',
+                                },
+                            })}
+                        />
                         {errors.id && <div className="error">{errors.id.message}</div>}
                     </label>
 
                     <div>
                         <label htmlFor="firstName">
                             Your Name
-                            <input {...register('firstName', { required: 'name is required' })} />
+                            <input
+                                {...register('firstName', {
+                                    required: 'name is required',
+                                    pattern: {
+                                        value: /^[A-Z]+$/i,
+                                        message: 'enter valid name',
+                                    },
+                                })}
+                            />
                             {errors.firstName && (
                                 <div className="error">{errors.firstName.message}</div>
                             )}
@@ -58,7 +74,15 @@ const Form = () => {
 
                     <label htmlFor="lastName">
                         Your LastName
-                        <input {...register('lastName', { required: 'last name is required' })} />
+                        <input
+                            {...register('lastName', {
+                                required: 'last name is required',
+                                pattern: {
+                                    value: /^[A-Z]+$/i,
+                                    message: 'enter valid last name',
+                                },
+                            })}
+                        />
                         {errors.lastName && <div className="error">{errors.lastName.message}</div>}
                     </label>
 
@@ -79,14 +103,29 @@ const Form = () => {
                     </label>
                     <label htmlFor="phone">
                         Your phone
-                        <input id="phone" />
+                        <input
+                            {...register('phone', {
+                                required: 'last name is required',
+                                pattern: {
+                                    value: /^(\d{3})\d{3}\d{4}/g,
+                                    message: 'enter valid phone with 10 numbers',
+                                },
+                            })}
+                        />
+                        {errors.phone && <div className="error">{errors.phone.message}</div>}
                     </label>
-                    <button className="form-btn" type="submit">
-                        Добавить в таблицу
-                    </button>
-                    <button className="form-btn" type="button" onClick={() => setShowModal(false)}>
-                        Cancel
-                    </button>
+                    <div>
+                        <button className="form-btn" type="submit">
+                            Добавить в таблицу
+                        </button>
+                        <button
+                            className="form-btn"
+                            type="button"
+                            onClick={() => setShowModal(false)}
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </form>
             </Modal>
         </>

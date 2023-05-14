@@ -1,5 +1,5 @@
 .btn {
-    border: 1px solid #7398ce;
+    border: 1px solid #002140;
     height: 5rem;
     width: 5rem;
     border-radius: 50%;
@@ -9,8 +9,8 @@
 }
 
 .btn:hover {
-    border: 1px solid #7398ce;
-    background-color: #7398ce;
+    border: 1px solid #002140;
+    background-color: #002140;
     color: #fff;
 }
 
@@ -19,8 +19,8 @@
 }
 
 .btnActive {
-    border: 1px solid #7398ce;
-    background-color: #7398ce;
+    border: 1px solid #002140;
+    background-color: #002140;
     color: #fff;
     height: 5rem;
     width: 5rem;

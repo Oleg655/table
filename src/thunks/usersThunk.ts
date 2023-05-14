@@ -1,5 +1,5 @@
-import { setUsersIsLoading } from 'actions';
-import { setUsersData } from 'actions/usersActions';
+import { setErrorMessage } from 'actions';
+import { setUsersData, setUsersIsLoading } from 'actions/usersActions';
 import { fetchUsersData } from 'api';
 import { AppThunk } from 'store/store';
 
@@ -12,7 +12,7 @@ export const getRequestUsersData = (): AppThunk => async dispatch => {
             dispatch(setUsersData(data));
         }
     } catch (error: any) {
-        console.log(error);
+        dispatch(setErrorMessage(error.message));
     } finally {
         dispatch(setUsersIsLoading(false));
     }

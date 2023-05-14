@@ -1,11 +1,12 @@
-import { usersReducer, paginationReeducer } from 'reducers';
+import { usersReducer, paginationReeducer, errorReducer } from 'reducers';
 import { applyMiddleware, combineReducers, legacy_createStore } from 'redux';
 import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk';
-import { PaginationActionsReturnT, UserActionsReturnT } from 'types';
+import { ErrorActionsReturnT, PaginationActionsReturnT, UserActionsReturnT } from 'types';
 
 const reducers = combineReducers({
     users: usersReducer,
     pagination: paginationReeducer,
+    error: errorReducer,
 });
 
 export const store = legacy_createStore(reducers, applyMiddleware(thunk));
@@ -14,7 +15,7 @@ export type RootSate = ReturnType<typeof store.getState>;
 
 export type AppStoreType = ReturnType<typeof reducers>;
 
-type AppActionsType = UserActionsReturnT | PaginationActionsReturnT;
+type AppActionsType = UserActionsReturnT | PaginationActionsReturnT | ErrorActionsReturnT;
 
 export type RootState = ReturnType<typeof store.getState>;
 
