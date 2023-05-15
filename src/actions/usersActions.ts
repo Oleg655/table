@@ -20,3 +20,6 @@ export const setUsersItem = (userId: number) =>
 
 export const setNewUserData = (data: FormI) =>
     ({ type: UsersActioinsT.SET_NEW_USER_DATA, data } as const);
+
+export const setFilteredUser = (data: FormI) =>
+    ({ type: UsersActioinsT.SET_FILTERED_USER, data } as const);

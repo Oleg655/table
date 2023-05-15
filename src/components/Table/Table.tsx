@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
 import './table.css';
-import { setStringsSort, setUsersItem } from 'actions';
+import { setFilteredUser, setNewUserData, setStringsSort, setUsersItem } from 'actions';
+import Form from 'components/Form';
 import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
 import SortIndicator from 'components/SortIndicator';
@@ -10,24 +11,21 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { UserI } from 'interfaces';
 
-const Table = () => {
+type TablePropsT = {
+    users: UserI[];
+};
+
+const Table = ({ users }: TablePropsT) => {
     const { loading } = useAppSelector(state => state.users);
-    const { usersData } = useAppSelector(state => state.users);
     const { firstName } = useAppSelector(state => state.users);
     const { lastName } = useAppSelector(state => state.users);
     const { email } = useAppSelector(state => state.users);
     const { id } = useAppSelector(state => state.users);
     const { phone } = useAppSelector(state => state.users);
-    const { page } = useAppSelector(state => state.pagination);
-    const { contentPerPage } = useAppSelector(state => state.pagination);
 
     const dispatch = useAppDispatch();
 
     const [showUserItem, setShowUserItem] = useState(false);
-
-    const indexOfLastItem = page * contentPerPage;
-    const indexOfFirstItem = indexOfLastItem - contentPerPage;
-    const currentItems = usersData.slice(indexOfFirstItem, indexOfLastItem);
 
     const onToggleSortById = () => {
         dispatch(setStringsSort(!id, 'id'));
@@ -57,6 +55,8 @@ const Table = () => {
 
     return (
         <>
+            <Form name="Добавить" action={setNewUserData} />
+            <Form name="Найти" action={setFilteredUser} />
             <table>
                 <thead>
                     <tr>
@@ -83,7 +83,7 @@ const Table = () => {
                 </thead>
 
                 <tbody>
-                    {currentItems?.map((user: UserI) => (
+                    {users?.map((user: UserI) => (
                         <tr
                             onDoubleClick={() => {
                                 onToggleShowUserItem(user.id);

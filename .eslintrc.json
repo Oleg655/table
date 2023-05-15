@@ -27,6 +27,7 @@
             "off",
             { "devDependencies": false, "optionalDependencies": false, "peerDependencies": false }
         ],
+        "no-restricted-syntax": ["off"],
         "prefer-template": "off",
         "import/prefer-default-export": ["off"],
         "no-underscore-dangle": ["off"],

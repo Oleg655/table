@@ -10,4 +10,5 @@ export interface UserDataI {
     phone: boolean;
     usersData: UserI[];
     currentUser: UserI | undefined;
+    filteredUser: UserI[];
 }

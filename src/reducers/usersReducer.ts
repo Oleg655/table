@@ -13,6 +13,7 @@ const initialState: UserDataI = {
     phone: false,
     usersData: [],
     currentUser: {} as UserI,
+    filteredUser: [],
 };
 
 export const usersReducer = (state: UserDataI = initialState, action: UserActionsReturnT) => {
@@ -27,11 +28,12 @@ export const usersReducer = (state: UserDataI = initialState, action: UserAction
                 ...state,
                 dataSize: action.size,
             };
-        case UsersActioinsT.SET_DATA:
+        case UsersActioinsT.SET_DATA: {
             return {
                 ...state,
                 usersData: [...action.data],
             };
+        }
         case UsersActioinsT.SET_USER_ITEM:
             return {
                 ...state,
@@ -79,6 +81,31 @@ export const usersReducer = (state: UserDataI = initialState, action: UserAction
             return {
                 ...state,
                 usersData: [newUser, ...state.usersData],
+            };
+        }
+        case UsersActioinsT.SET_FILTERED_USER: {
+            // for (let index = 0; index < state.usersData.length; index += 1) {
+            //     for (const key in action.data) {
+            //         if ((state.usersData as any)[index][key] === (action.data as any)[key]) {
+            //             console.log(state.usersData[index]);
+            //             return state.usersData[index];
+            //         }
+            //     }
+            // }
+
+            return {
+                ...state,
+                filteredUser: state.usersData.filter(user => {
+                    let filteredUser;
+                    for (const key in action.data) {
+                        if ((user as any)[key] === (action.data as any)[key]) {
+                            filteredUser = user;
+                            return filteredUser;
+                        }
+                    }
+
+                    return filteredUser;
+                }),
             };
         }
 

@@ -1,15 +1,23 @@
 import { useState } from 'react';
 
-import { setNewUserData } from 'actions';
+import { setFilteredUser, setNewUserData, setTotalElements } from 'actions';
 import Modal from 'components/Modal';
+import { Paths } from 'enums';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { FormI } from 'interfaces';
 import './form.css';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
-const Form = () => {
+type FormPropsT = {
+    action: (data: FormI) => ReturnType<typeof setNewUserData> | ReturnType<typeof setFilteredUser>;
+    name: string;
+};
+
+const Form = ({ action, name }: FormPropsT) => {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -21,7 +29,11 @@ const Form = () => {
     });
 
     const onSubmit: SubmitHandler<FormI> = data => {
-        dispatch(setNewUserData(data));
+        dispatch(action(data));
+        if (name === 'Найти') {
+            navigate(Paths.TABLE_FILTERED);
+            dispatch(setTotalElements(1));
+        }
         setShowModal(false);
         reset();
     };
@@ -35,7 +47,7 @@ const Form = () => {
                     setShowModal(true);
                 }}
             >
-                Добавить
+                {name}
             </button>
             <Modal show={showModal} backgroundOnClick={() => setShowModal(false)}>
                 <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -115,7 +127,7 @@ const Form = () => {
                     </label>
                     <div className="actions">
                         <button className="form-btn" type="submit">
-                            Добавить в таблицу
+                            {name}
                         </button>
                         <button
                             className="form-btn"
