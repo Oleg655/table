@@ -55,7 +55,7 @@ const Table = ({ users }: TablePropsT) => {
 
     return (
         <>
-            <div>
+            <div className="forms">
                 <Form name="Добавить" action={setNewUserData} />
                 <Form name="Найти" action={setFilteredUser} />
             </div>
@@ -102,9 +102,10 @@ const Table = ({ users }: TablePropsT) => {
                         ))}
                     </tbody>
                 </table>
-
-                {showUserItem ? <UserItem /> : null}
-                <Pagination />
+                <div>
+                    {showUserItem ? <UserItem /> : null}
+                    <Pagination />
+                </div>
             </div>
         </>
     );
