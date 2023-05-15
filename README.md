@@ -1,5 +1,7 @@
 # Table
 Table is a project for search user`s information and entered data
+With filtration and sorting data by column name
+You can request large and small amounts data of users
 
 ## Technologies in this project
 + React
