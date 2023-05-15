@@ -2,14 +2,14 @@
 Table is a project for search user`s information and entered data
 
 ## Technologies in this project
--React
--Redux
--React-redux
--Redux-thunk
--React-hook-form
--React-router-dom
--TypeScript
--CSS
++ React
++ Redux
++ React-redux
++ Redux-thunk
++ React-hook-form
++ React-router-dom
++ TypeScript
++ CSS
 
 Also this project have linters for format code
 
