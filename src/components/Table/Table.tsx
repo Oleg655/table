@@ -55,53 +55,57 @@ const Table = ({ users }: TablePropsT) => {
 
     return (
         <>
-            <Form name="Добавить" action={setNewUserData} />
-            <Form name="Найти" action={setFilteredUser} />
-            <table>
-                <thead>
-                    <tr>
-                        <th onClick={onToggleSortById}>
-                            id
-                            <SortIndicator isSorted={id} />
-                        </th>
-                        <th onClick={onToggleSortByName}>
-                            firstName
-                            <SortIndicator isSorted={firstName} />
-                        </th>
-                        <th onClick={onToggleSortByLastName}>
-                            lastName
-                            <SortIndicator isSorted={lastName} />
-                        </th>
-                        <th onClick={onToggleSortByEmail}>
-                            email
-                            <SortIndicator isSorted={email} />
-                        </th>
-                        <th onClick={onToggleSortByPhone}>
-                            phone <SortIndicator isSorted={phone} />
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {users?.map((user: UserI) => (
-                        <tr
-                            onDoubleClick={() => {
-                                onToggleShowUserItem(user.id);
-                            }}
-                            key={Math.random()}
-                        >
-                            <td>{user.id}</td>
-                            <td>{user.firstName}</td>
-                            <td>{user.lastName}</td>
-                            <td>{user.email}</td>
-                            <td>{user.phone}</td>
+            <div>
+                <Form name="Добавить" action={setNewUserData} />
+                <Form name="Найти" action={setFilteredUser} />
+            </div>
+            <div className="container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th onClick={onToggleSortById}>
+                                id
+                                <SortIndicator isSorted={id} />
+                            </th>
+                            <th onClick={onToggleSortByName}>
+                                firstName
+                                <SortIndicator isSorted={firstName} />
+                            </th>
+                            <th onClick={onToggleSortByLastName}>
+                                lastName
+                                <SortIndicator isSorted={lastName} />
+                            </th>
+                            <th onClick={onToggleSortByEmail}>
+                                email
+                                <SortIndicator isSorted={email} />
+                            </th>
+                            <th onClick={onToggleSortByPhone}>
+                                phone <SortIndicator isSorted={phone} />
+                            </th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
 
-            {showUserItem ? <UserItem /> : null}
-            <Pagination />
+                    <tbody>
+                        {users?.map((user: UserI) => (
+                            <tr
+                                onDoubleClick={() => {
+                                    onToggleShowUserItem(user.id);
+                                }}
+                                key={Math.random()}
+                            >
+                                <td>{user.id}</td>
+                                <td>{user.firstName}</td>
+                                <td>{user.lastName}</td>
+                                <td>{user.email}</td>
+                                <td>{user.phone}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+
+                {showUserItem ? <UserItem /> : null}
+                <Pagination />
+            </div>
         </>
     );
 };

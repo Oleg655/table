@@ -2,12 +2,9 @@ table {
     width: 70vw;
     margin: 0 auto;
     font-size: 1.8rem;
+    cursor: pointer;
     border-collapse: collapse;
     box-shadow: 0.5rem 0.5rem 0.5rem 0.3rem rgba(0, 0, 0, 0.2);
-}
-
-thead {
-    cursor: pointer;
 }
 
 thead tr {
@@ -19,13 +16,7 @@ thead th {
     width: 20%;
 }
 
-tbody td:last-child {
-    display: flex;
-    justify-content: space-between;
-}
-
 tbody td {
-    cursor: pointer;
     width: 20rem;
 }
 
@@ -42,4 +33,12 @@ td {
     padding: 1.6rem 1rem;
     text-align: left;
     font-size: 1.5rem;
+}
+
+.container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
 }

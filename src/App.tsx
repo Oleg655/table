@@ -29,15 +29,13 @@ const App = () => {
     }
 
     return (
-        <div>
-            <Routes>
-                <Route path="/" element={<Navigate to={Paths.HOME} />} />
-                <Route path={Paths.HOME} element={<SelectSizeData />} />
-                <Route path={Paths.TABLE} element={<Table users={currentItems} />} />
-                <Route path={Paths.TABLE_FILTERED} element={<Table users={filteredUser} />} />
-                <Route path={'/*'} element={<h1>Page not found</h1>} />
-            </Routes>
-        </div>
+        <Routes>
+            <Route path="/" element={<Navigate to={Paths.HOME} />} />
+            <Route path={Paths.HOME} element={<SelectSizeData />} />
+            <Route path={Paths.TABLE} element={<Table users={currentItems} />} />
+            <Route path={Paths.TABLE_FILTERED} element={<Table users={filteredUser} />} />
+            <Route path={'/*'} element={<h1>Page not found</h1>} />
+        </Routes>
     );
 };
 

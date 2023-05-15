@@ -5,7 +5,6 @@ import {
     setUsersIsLoading,
     setStringsSort,
     setNumberSort,
-    setDataSize,
     setFilteredUser,
 } from 'actions';
 
@@ -16,5 +15,4 @@ export type UserActionsReturnT =
     | ReturnType<typeof setNumberSort>
     | ReturnType<typeof setUsersIsLoading>
     | ReturnType<typeof setUsersData>
-    | ReturnType<typeof setUsersItem>
-    | ReturnType<typeof setDataSize>;
+    | ReturnType<typeof setUsersItem>;

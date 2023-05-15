@@ -5,7 +5,6 @@ export {
     setUsersItem,
     setStringsSort,
     setNumberSort,
-    setDataSize,
     setFilteredUser,
 } from './usersActions';
 export { setPage, setTotalElements } from './paginationActions';
